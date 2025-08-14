@@ -3,14 +3,15 @@ unit UDTMConexao;
 interface
 
 uses
-  System.SysUtils, System.Classes;
+  System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB, ZAbstractConnection,
+  ZConnection;
 
 type
   TdtmConexao = class(TDataModule)
-  private
-    { Private declarations }
+    ADOPrincipal: TADOConnection;
   public
-    { Public declarations }
+    procedure Conectar;
+    procedure Desconectar;
   end;
 
 var
@@ -22,4 +23,18 @@ implementation
 
 {$R *.dfm}
 
+procedure TdtmConexao.Conectar;
+begin
+  // garanta no Object Inspector: LoginPrompt=False e a ConnectionString já testada
+  if not ADOPrincipal.Connected then
+    ADOPrincipal.Connected := True;
+end;
+
+procedure TdtmConexao.Desconectar;
+begin
+  if ADOPrincipal.Connected then
+    ADOPrincipal.Connected := False;
+end;
+
 end.
+

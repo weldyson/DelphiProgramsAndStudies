@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, UDTMConexao;
 
 type
   TfrmPrincipal = class(TForm)
@@ -24,6 +24,8 @@ type
     PRODUTO2: TMenuItem;
     VENDAPORDATA1: TMenuItem;
     procedure mnuFECHARClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,9 +39,23 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  if not Assigned(dtmConexao) then
+    dtmConexao := TdtmConexao.Create(Self);
+  dtmConexao.Conectar;
+end;
+
+procedure TfrmPrincipal.FormDestroy(Sender: TObject);
+begin
+  if Assigned(dtmConexao) then
+    dtmConexao.Desconectar;
+end;
+
 procedure TfrmPrincipal.mnuFECHARClick(Sender: TObject);
 begin
   Close;
 end;
 
 end.
+

@@ -2,8 +2,8 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 441
-  ClientWidth = 624
+  ClientHeight = 485
+  ClientWidth = 658
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,6 +12,8 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   Menu = MainPrincipal
   WindowState = wsMaximized
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   TextHeight = 15
   object MainPrincipal: TMainMenu
     Left = 568

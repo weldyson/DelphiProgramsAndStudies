@@ -1,4 +1,29 @@
 object dtmConexao: TdtmConexao
   Height = 480
   Width = 640
+  object dtmPrincipal: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    Properties.Strings = (
+      'RawStringEncoding=DB_CP')
+    DisableSavepoints = False
+    HostName = 'localhost\MSSQLSERVER01'
+    Port = 0
+    Database = 'WaasTeste'
+    User = 'waas'
+    Password = 'Wgisa$1914'
+    Protocol = 'mssql'
+    Left = 40
+    Top = 24
+  end
+  object ADOPrincipal: TADOConnection
+    ConnectionString = 
+      'Provider=MSOLEDBSQL.1;Password=Wgisa$1914;Persist Security Info=' +
+      'True;User ID=waas;Initial Catalog=WaasTeste;Data Source=localhos' +
+      't\MSSQLSERVER01;Initial File Name="";Trust Server Certificate=Tr' +
+      'ue;Server SPN="";Authentication="";Access Token=""'
+    Provider = 'MSOLEDBSQL.1'
+    Left = 328
+    Top = 248
+  end
 end
